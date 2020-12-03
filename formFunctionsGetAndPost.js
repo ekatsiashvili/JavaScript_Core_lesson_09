@@ -1,6 +1,5 @@
 'use strict'
 
-// Get
 function sendDataByGetMethod() {
 	var userData = {
 			userName : document.getElementById('userName').value,
@@ -21,7 +20,6 @@ function sendDataByGetMethod() {
 }
 
 
-// Post
 function sendDataByPostMethod() {
 	var userData = {
 			userName : document.getElementById('userName').value,
@@ -39,7 +37,7 @@ function sendDataByPostMethod() {
 	xhr.send(JSON.stringify(userData));	
 }
 
-// Validation
+
 userAge.onblur = function() {
 	if( this.value<1 || this.value>100 || isNaN(this.value)) {
 		this.value = "Error!!! Enter the age of 1 to 100";
