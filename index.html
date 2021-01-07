@@ -5,23 +5,22 @@
 <title>Lesson-09: Form and AJAX</title>
 </head>
 <body>
+	<h1>Input form</h1>
 	<form>
-		<label>Name</label><br>
-		<input type=text id="userName"><br> 
-		<label>Surname</label><br>
-		<input type=text id="userSurname"><br> 
-		<label>Age</label><br>
-		<input type=text id="userAge"><br>
-		<label>Address</label><br>
-		<input type=text id="userAddress"><br>
-		
-		<h3>Ajax Get method</h3>
-		<input type="button" value="Send" onclick="sendDataByGetMethod()"><br>
-		<h3>Ajax Post method</h3>
-		<input type="button" value="Send" onclick="sendDataByPostMethod()">
-	</form><br>
+		<label>Фамилия</label><br> <input type="text" id="getLastName"><br>
+		<label>Имя</label><br> <input type="text" id="getFirstName"><br>
+		<label>Возраст</label><br> <input type="text" id="getAge"><label class='invisible' id='ageLabel'>Возраст: от 0 до 100</label><br>
+		<label>Место проживания</label><br> <input type="text" id="getAddress"><br>
+		<br> <input type="button" value="Send by Get"
+			onclick="sendDataByGetMethod()">
+		<input type="button" value="Send by Post"
+			onclick="sendDataByPostMethod()">	
+
+	</form>
 
 	<script src="formFunctionsGetAndPost.js"></script>
 
 </body>
 </html>
+
+

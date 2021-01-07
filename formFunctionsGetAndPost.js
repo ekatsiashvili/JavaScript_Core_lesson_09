@@ -1,46 +1,44 @@
-'use strict'
-
-function sendDataByGetMethod() {
-	var userData = {
-			userName : document.getElementById('userName').value,
-			userSurname : document.getElementById('userSurname').value,
-			userAge : document.getElementById('userAge').value,
-			userAddress : document.getElementById('userAddress').value
-	};
-	
-	for (var value in userData)
-		userData[value] += '.ValidatedByGET';
-	
-	var xhr = new XMLHttpRequest();
-	xhr.open("GET", "/userGet?userName=" + userData.userName
-			+ "&userSurname=" + userData.userSurname + "&userAge="
-			+ userData.userAge + "&userAddress=" + userData.userAddress);
-	xhr.setRequestHeader("Content-type", "application/json");
-	xhr.send();	
+getAge.onblur = function() {
+	if ((this.value < 0) || (this.value > 100) || (isNaN(this.value))) {
+		getAge.classList.add('errors');
+		getAge.focus();
+		getAge.value = 'Ошибка';
+		ageLabel.classList.remove('invisible');
+		ageLabel.classList.add('visible');
+	} else {
+		getAge.classList.remove('errors');
+		getAddress.focus();
+		ageLabel.classList.remove('visible');
+		ageLabel.classList.add('invisible');
+	}
 }
 
+function sendDataByGetMethod() {
+	let userData = {
+		lName : document.getElementById('getLastName').value,
+		fName : document.getElementById('getFirstName').value,
+		age : document.getElementById('getAge').value,
+		address : document.getElementById('getAddress').value
+	};
+
+	var xhr = new XMLHttpRequest();
+	xhr.open("GET", "/userGet?lName=" + userData.lName + "&fName="
+			+ userData.fName + "&age=" + userData.age + "&address="
+			+ userData.address);
+	xhr.setRequestHeader("Content-type", "application/json");
+	xhr.send();
+}
 
 function sendDataByPostMethod() {
-	var userData = {
-			userName : document.getElementById('userName').value,
-			userSurname : document.getElementById('userSurname').value,
-			userAge : document.getElementById('userAge').value,
-			userAddress : document.getElementById('userAddress').value
+	let userData = {
+		lName : document.getElementById('getLastName').value,
+		fName : document.getElementById('getFirstName').value,
+		age : document.getElementById('getAge').value,
+		address : document.getElementById('getAddress').value
 	};
-	
-	for (var value in userData)
-		userData[value] += '.ValidatedByPOST';
-	
+
 	var xhr = new XMLHttpRequest();
 	xhr.open("POST", "/userPost");
 	xhr.setRequestHeader("Content-type", "application/json");
-	xhr.send(JSON.stringify(userData));	
-}
-
-
-userAge.onblur = function() {
-	if( this.value<1 || this.value>100 || isNaN(this.value)) {
-		this.value = "Error!!! Enter the age of 1 to 100";
-		userAge.focus();
-	}
+	xhr.send(JSON.stringify(userData));
 }
